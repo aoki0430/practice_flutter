@@ -7,39 +7,83 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      home: MainPage(),
       title: "etc....",
-      home: Container(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: <Widget>[
-            Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: <Widget>[
-                Container( color: Colors.red, width: 100, height:  100),
-                Container( color: Colors.green, width: 100, height:  100),
-                Container( color: Colors.blue, width: 100, height:  100),
-                Container( color: Colors.yellow, width: 100, height:  100),
-              ],
-            ),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Container( color: Colors.red, width: 100, height:  100),
-                Container( color: Colors.green, width: 100, height:  100),
-                Container( color: Colors.blue, width: 100, height:  100),
-                Container( color: Colors.yellow, width: 100, height:  100),
-              ],
-            ),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: <Widget>[
-                Container( color: Colors.red, width: 100, height:  100),
-                Container( color: Colors.green, width: 100, height:  100),
-                Container( color: Colors.blue, width: 100, height:  100),
-                Container( color: Colors.yellow, width: 100, height:  100),
-              ],
-            ),
-          ],
+      routes: <String, WidgetBuilder> {
+        '/home': (BuildContext context) => MainPage(),
+        '/subpage1': (BuildContext context) => SubPage1(),
+        '/subpage2': (BuildContext context) => SubPage2(),
+      },
+    );
+  }
+}
+
+class MainPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Mainページ"),
+      ),
+      body: Container(
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Text("Main"),
+              RaisedButton(onPressed: () => Navigator.of(context).pushNamed("/subpage1"),
+              child: Text("sub1へ"),)
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class SubPage1 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Mainページ"),
+      ),
+      body: Container(
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Text("Main"),
+              RaisedButton(onPressed: () => Navigator.of(context).pushNamed("/subpage2"),
+                child: Text("sub2へ"),)
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class SubPage2 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Mainページ"),
+      ),
+      body: Container(
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Text("Main"),
+              RaisedButton(onPressed: () => Navigator.of(context).pushNamed("/subpage1"),
+                child: Text("sub1へ"),)
+            ],
+          ),
         ),
       ),
     );
